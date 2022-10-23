@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-import "./libraries/base64.sol";
+import "./libs/base64.sol";
 
 import "hardhat/console.sol";
 

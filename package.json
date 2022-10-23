@@ -1,4 +1,18 @@
 {
+  "name": "shaman-contracts",
+  "version": "0.0.1",
+  "description": "A collection of shaman contracts for Baal",
+  "keywords": [
+    "moloch",
+    "dao",
+    "shaman",
+    "baal"
+  ],
+  "license": "GPL-3.0",
+  "author": "plor",
+  "scripts": {
+    "test": "npx hardhat test"
+  },
   "devDependencies": {
     "@ethersproject/abi": "^5.4.7",
     "@ethersproject/providers": "^5.4.7",
@@ -15,5 +29,9 @@
     "hardhat-gas-reporter": "^1.0.8",
     "solidity-coverage": "^0.8.0",
     "typechain": "^8.1.0"
+  },
+  "dependencies": {
+    "@daohaus/baal-contracts": "^0.4.1",
+    "@openzeppelin/contracts": "^4.7.3"
   }
 }
