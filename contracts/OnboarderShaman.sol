@@ -4,7 +4,7 @@ pragma solidity ^0.8.4;
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "./interfaces/IBaal.sol";
+import "./interfaces/IManagerBaal.sol";
 
 contract OnboarderShaman is ReentrancyGuard {
     event YeetReceived(
@@ -27,7 +27,7 @@ contract OnboarderShaman is ReentrancyGuard {
     uint256 public platformFee;
 
     uint256 public balance;
-    IBAAL public baal;
+    IManagerBaal public baal;
     IERC20 public token;
 
     OnboarderShamanSummoner factory;
@@ -46,7 +46,7 @@ contract OnboarderShaman is ReentrancyGuard {
     ) public {
         require(!initialized, "already initialized");
         initialized = true;
-        baal = IBAAL(_baal);
+        baal = IManagerBaal(_baal);
         token = IERC20(_token);
         maxTarget = _maxTarget;
         raiseEndTime = _raiseEndTime;

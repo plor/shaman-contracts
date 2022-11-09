@@ -4,6 +4,10 @@ const {
 } = require("@nomicfoundation/hardhat-network-helpers");
 const { anyValue } = require("@nomicfoundation/hardhat-chai-matchers/withArgs");
 const { expect } = require("chai");
+const { waffle } = require("hardhat");
+const { deployMockContract, deployContract } = waffle;
+
+const { IBaal } = require("./build/IBaal.json");
 
 describe("DuesShaman", function () {
   // We define a fixture to reuse the same setup in every test.
@@ -14,10 +18,17 @@ describe("DuesShaman", function () {
     // Contracts are deployed using the first signer/account by default
     const [owner, otherAccount] = await ethers.getSigners();
 
-    const DuesShaman = await ethers.getContractFactory("DuesShaman");
-    const duesShaman = await DuesShaman.deploy();
+    const { BaalMock } = await setupBaalMock(owner);
+    const DuesShamanSummoner = await ethers.getContractFactory("DuesShamanSummoner");
+    const duesShaman = await DuesShamanSummoner.deploy();
 
     return { duesShaman, owner, otherAccount };
+  }
+
+  async function setupBaalMock(owner) {
+    const mockBaal = await deployMockContract(owner, IBaal.abi);
+
+    return { mockBaal };
   }
 
   describe("Deployment", function () {
